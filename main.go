@@ -1,15 +1,31 @@
 package main
 
 import (
+	"context"
 	"fmt"
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/mongodb/mongo-go-driver/mongo"
+	"godemos/mysql"
+	"godemos/postgres"
+	"godemos/postgres/models"
+)
+
+var (
+	pgDbUrl = "host=localhost port=5431 user=test password=test dbname=test sslmode=disable"
+	//mysqlDbUrl = "root:test@tcp(mysql:3307)/test"
+	mysqlDbUrl = "root:test@tcp(mysql:3307)/test"
 )
 
 func main() {
 	fmt.Println("test")
-	dbURL := "host=localhost port=5431 user=test password=test dbname=test sslmode=disable"
-	db, err := ConnectPostgres(dbURL, false)
+
+	//postgresDemo()
+	//mysqlDemo()
+	mongoDemo()
+}
+
+// postgres
+func postgresDemo() {
+	db, err := postgres.ConnectPostgres(pgDbUrl, false)
 	if err != nil {
 		fmt.Println("err :", err)
 		return
@@ -17,23 +33,30 @@ func main() {
 		fmt.Println("db:", db)
 	}
 
+	db = db.AutoMigrate(&models.Student{}).AutoMigrate(&models.Setting{})
 }
 
-func ConnectPostgres(url string, extlog bool) (*gorm.DB, error) {
-	db, err := gorm.Open("postgres", url)
+// mysql
+func mysqlDemo() {
 
+	db, err := mysql.ConnectMySQL(mysqlDbUrl, false)
 	if err != nil {
-		return nil, err
+		fmt.Println("err: ", err)
+		return
+	} else {
+		fmt.Println("db:", db)
 	}
 
-	db.LogMode(true)
-	if extlog {
-		//db.SetLogger()
+	db = db.AutoMigrate(&models.Student{}).AutoMigrate(&models.Setting{})
+}
+
+// mongo
+func mongoDemo() {
+	client, err := mongo.Connect(context.Background(), "mongodb://localhost:27018/test", nil)
+	if err != nil {
+		panic(err)
 	}
 
-	db.SingularTable(false)
-	db.DB().SetMaxIdleConns(10)
-	db.DB().SetMaxOpenConns(100)
-
-	return db, nil
+	db := client.Database("test")
+	fmt.Println(db)
 }
