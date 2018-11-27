@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/mongodb/mongo-go-driver/mongo"
+	"godemos/mongoapi"
 	"godemos/mysql"
 	"godemos/postgres"
 	"godemos/postgres/models"
@@ -20,7 +21,12 @@ func main() {
 
 	//postgresDemo()
 	//mysqlDemo()
-	mongoDemo()
+	//mongoDemo()
+	//mongoapi.Demo1()
+	//mongoapi.Demo2()
+	//mongoapi.Demo3()
+	//mongoapi.Demo4()
+	mongoapi.Demo5()
 }
 
 // postgres
