@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/mongodb/mongo-go-driver/mongo"
-	"godemos/mongoapi"
+	"godemos/casbindemo"
 	"godemos/mysql"
 	"godemos/postgres"
 	"godemos/postgres/models"
@@ -26,7 +26,12 @@ func main() {
 	//mongoapi.Demo2()
 	//mongoapi.Demo3()
 	//mongoapi.Demo4()
-	mongoapi.Demo5()
+	//mongoapi.Demo5()
+
+	// casbin
+	casbindemo.Demo("postgres", pgDbUrl)
+	//casbindemo.Demo2()
+	//casbindemo.Demo3()
 }
 
 // postgres
