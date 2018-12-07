@@ -29,8 +29,8 @@ func main() {
 	//mongoapi.Demo5()
 
 	// casbin
-	casbindemo.Demo("postgres", pgDbUrl)
-	//casbindemo.Demo2()
+	//casbindemo.Demo("postgres", pgDbUrl)
+	casbindemo.Demo2()
 	//casbindemo.Demo3()
 }
 

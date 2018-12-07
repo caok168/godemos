@@ -26,22 +26,20 @@ func Demo(dbtype, dburl string) {
 	println("subs:", subs)
 }
 
-// 需要注意的地方是：策略文件需要在,（逗号）后面加一个空格
-//p, superAdmin, gy, project, read
-//p, superAdmin, gy, project, write
-//p, superAdmin, jn, project, read
-//p, superAdmin, jn, project, write
-//p, admin, gy, project, read
-//p, admin, gy, project, write
-//p, admin, jn, asse, read
-//p, admin, jn, asse, write
-//p, zhuangjia, jn, project, write
-//p, zhuangjia, gy, asse, write
+// 策略文件
+//p, superAdmin, project, read
+//p, superAdmin, project, write
+//p, admin, project, read
+//p, admin, project, write
+//p, admin, asse, read
+//p, admin, asse, write
+//p, zhuangjia, project, write
+//p, zhuangjia, asse, write
+//p, shangshang, project, read
+//p, shangshang, asse, read
 //
-//g, quyuan, admin, gy
-//g, quyuan, admin, jn
-//g, wenyin, zhuangjia, gy
-//g, shangshang, zhuangjia, jn
+//g, quyuan, admin
+//g, wenyin, zhuangjia
 
 // 本地配置文件 不带domain
 func Demo2() {
@@ -69,6 +67,23 @@ func Demo2() {
 	}
 
 }
+
+// 需要注意的地方是：策略文件需要在,（逗号）后面加一个空格
+//p, superAdmin, gy, project, read
+//p, superAdmin, gy, project, write
+//p, superAdmin, jn, project, read
+//p, superAdmin, jn, project, write
+//p, admin, gy, project, read
+//p, admin, gy, project, write
+//p, admin, jn, asse, read
+//p, admin, jn, asse, write
+//p, zhuangjia, jn, project, write
+//p, zhuangjia, gy, asse, write
+//
+//g, quyuan, admin, gy
+//g, quyuan, admin, jn
+//g, wenyin, zhuangjia, gy
+//g, shangshang, zhuangjia, jn
 
 // 本地配置文件 带domain
 func Demo3() {
