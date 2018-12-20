@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/mongodb/mongo-go-driver/mongo"
-	"godemos/casbindemo"
+	"godemos/influxdbdemo"
 	"godemos/mysql"
 	"godemos/postgres"
 	"godemos/postgres/models"
@@ -30,8 +30,11 @@ func main() {
 
 	// casbin
 	//casbindemo.Demo("postgres", pgDbUrl)
-	casbindemo.Demo2()
+	//casbindemo.Demo2()
 	//casbindemo.Demo3()
+
+	//influxdbdemo.Demo()
+	influxdbdemo.Demo2()
 }
 
 // postgres
